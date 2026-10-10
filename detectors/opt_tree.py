@@ -86,7 +86,7 @@ class LSHTree:
             self._recursive_display(children[key], leftStr +' ')
 
     def predict(self, granularity, point):
-        point = self._lsh.format_for_lsh(np.mat(point)).A1
+        point = self._lsh.format_for_lsh(np.asmatrix(point)).A1
         path_length = self._recursive_get_search_depth(
             self._root, 0, granularity, point)
         return pow(2.0, (-1.0 *path_length/self._reference_path_length))
